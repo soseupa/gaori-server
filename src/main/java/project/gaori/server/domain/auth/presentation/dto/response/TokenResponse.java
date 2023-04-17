@@ -10,7 +10,5 @@ public class TokenResponse {
     private String accessToken;
     private String refreshToken;
     private String name;
-    private String userId;
-    private boolean isLogin;
-    private Long roleId;
+    private String email;
 }

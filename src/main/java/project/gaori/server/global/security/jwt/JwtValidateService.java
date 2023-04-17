@@ -10,8 +10,8 @@ public class JwtValidateService {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    public String getUserId(String token) {
+    public String getEmail(String token) {
         return jwtTokenProvider.extractAllClaims(token)
-                .get("userId", String.class);
+                .get("email", String.class);
     }
 }

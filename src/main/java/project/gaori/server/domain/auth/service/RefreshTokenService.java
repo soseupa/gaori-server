@@ -1,12 +1,12 @@
 package project.gaori.server.domain.auth.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import project.gaori.server.domain.auth.domain.RefreshToken;
 import project.gaori.server.domain.auth.domain.repository.RefreshTokenRepository;
 import project.gaori.server.domain.auth.presentation.dto.response.AccessTokenResponse;
 import project.gaori.server.global.security.jwt.JwtTokenProvider;
 import project.gaori.server.global.security.jwt.exception.ExpiredTokenException;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor

@@ -47,9 +47,9 @@ public class JwtTokenProvider {
         return token;
     }
 
-    public String generateToken(String userId, Long time) {
+    public String generateToken(String email, Long time) {
         Claims claims = Jwts.claims();
-        claims.put("userId", userId);
+        claims.put("email", email);
         Date now = new Date();
 
         return Jwts.builder()
