@@ -1,11 +1,6 @@
 package project.gaori.server.global.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import project.gaori.server.global.error.filter.GlobalErrorFilter;
-import project.gaori.server.global.security.auth.AuthDetailsService;
-import project.gaori.server.global.security.jwt.JwtTokenProvider;
-import project.gaori.server.global.security.jwt.JwtValidateService;
-import project.gaori.server.global.security.jwt.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +14,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsUtils;
+import project.gaori.server.global.error.filter.GlobalErrorFilter;
+import project.gaori.server.global.security.auth.AuthDetailsService;
+import project.gaori.server.global.security.jwt.JwtTokenProvider;
+import project.gaori.server.global.security.jwt.JwtValidateService;
+import project.gaori.server.global.security.jwt.filter.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -56,7 +56,7 @@ public class SecurityConfig {
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
                 .antMatchers(HttpMethod.GET, "/user/check/*").permitAll()
-                .antMatchers(HttpMethod.POST, "/email/signup").permitAll()
+                .antMatchers(HttpMethod.POST, "/email/check").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
