@@ -1,11 +1,13 @@
 package project.gaori.server.domain.user.facade;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import project.gaori.server.domain.user.entity.User;
 import project.gaori.server.domain.user.entity.repository.UserRepository;
 import project.gaori.server.domain.user.exception.UserNotFoundException;
+import project.gaori.server.global.security.auth.AuthDetails;
 
 @Component
 @RequiredArgsConstructor
@@ -13,24 +15,23 @@ public class UserFacade {
     private final UserRepository userRepository;
 
     @Transactional
-    public User getCurrentUser(long id){
-        return userRepository.findById(id)
+    public User getCurrentUser() {
+        AuthDetails auth = (AuthDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return auth.getUser();
+    }
+
+    @Transactional
+    public User findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
-    @Transactional
-    public User findUserByEmail(String userId){
-        return userRepository.findUserByEmail(userId)
-                .orElseThrow(() ->UserNotFoundException.EXCEPTION);
-    }
+
     @Transactional
     public boolean isUserExistByNickName(String nickname) {
         return userRepository.existsUserByNickname(nickname);
     }
 
-    public boolean existsUserByEmail(String userId) {
-        if(!userRepository.existsUserByEmail(userId)){
-            throw UserNotFoundException.EXCEPTION;
-        }
-        return true;
+    public void existsUserByEmail(String email) {
+        if (!userRepository.existsUserByEmail(email)) throw UserNotFoundException.EXCEPTION;
     }
 }
