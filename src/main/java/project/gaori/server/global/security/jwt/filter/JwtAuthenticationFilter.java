@@ -33,7 +33,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private void setAuthentication(String token, HttpServletRequest request) throws ExpiredJwtException {
-        UserDetails userDetails = authDetailsService.loadUserByUsername(jwtValidateService.getUserId(token));
+        UserDetails userDetails = authDetailsService.loadUserByUsername(jwtValidateService.getEmail(token));
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authentication);
