@@ -1,10 +1,10 @@
 package project.gaori.server.global.security.auth;
 
-import project.gaori.server.domain.user.entity.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import project.gaori.server.domain.user.entity.User;
 
 import java.util.Collection;
 import java.util.Collections;

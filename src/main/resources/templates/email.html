@@ -11,6 +11,7 @@
             width: 100vw;
             height: 100vh;
         }
+
         .header {
             height: 10%;
             padding-top: 10px;
@@ -21,6 +22,7 @@
             width: 80%;
             margin-left: 10%;
         }
+
         .content {
             height: 500px;
             line-height: 500px;
@@ -31,13 +33,16 @@
             text-align: center;
             margin-left: 10%;
         }
+
         h1 {
             text-align: center;
         }
+
         span {
             font-size: 200px;
             text-align: center;
         }
+
         .contain {
             background-color: pink;
             width: 100%;
@@ -48,12 +53,12 @@
 </head>
 <body>
 <div class="contain">
-<div class="header">
-    <h1>가오리 인증 코드입니다.</h1>
-</div>
-<div class="content">
-    <span style="font-size: 50px;" th:text="${code}">dfdfd</span>
-</div>
+    <div class="header">
+        <h1>가오리 인증 코드입니다.</h1>
+    </div>
+    <div class="content">
+        <span style="font-size: 50px;" th:text="${code}">dfdfd</span>
+    </div>
 </div>
 </body>
 </html>
