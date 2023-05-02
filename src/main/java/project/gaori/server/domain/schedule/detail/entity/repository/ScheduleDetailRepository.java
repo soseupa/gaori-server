@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import project.gaori.server.domain.schedule.detail.entity.ScheduleDetail;
 
 @Repository
-public interface ScheduleDetailRepository extends JpaRepository<ScheduleDetail,Long> {
+public interface ScheduleDetailRepository extends JpaRepository<ScheduleDetail, Long> {
 }

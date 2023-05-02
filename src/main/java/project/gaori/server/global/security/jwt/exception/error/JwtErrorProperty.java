@@ -1,8 +1,9 @@
 package project.gaori.server.global.security.jwt.exception.error;
-import project.gaori.server.global.error.exception.ErrorProperty;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import project.gaori.server.global.error.exception.ErrorProperty;
 
 @Getter
 @RequiredArgsConstructor

@@ -1,10 +1,10 @@
 package project.gaori.server.global.error;
 
-import project.gaori.server.global.error.exception.ErrorProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
+import project.gaori.server.global.error.exception.ErrorProperty;
 
 @Getter
 @Builder
