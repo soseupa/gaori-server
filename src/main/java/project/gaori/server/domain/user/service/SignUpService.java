@@ -15,7 +15,7 @@ public class SignUpService {
     private final UserRepository userRepository;
 
     @Transactional
-    public void execute(SignUpRequest request){
+    public void execute(SignUpRequest request) {
         userRepository.save(
                 User.builder()
                         .email(request.getEmail())
