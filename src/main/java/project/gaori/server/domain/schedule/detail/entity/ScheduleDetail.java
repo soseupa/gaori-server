@@ -1,6 +1,6 @@
 package project.gaori.server.domain.schedule.detail.entity;
 
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.gaori.server.domain.schedule.entity.Schedule;
@@ -16,8 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_schedule_detail")
-@AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class ScheduleDetail {
 
@@ -34,6 +33,6 @@ public class ScheduleDetail {
     private String location;
 
     @Column(nullable = false)
-    private int order;
+    private Integer orderIndex;
 
 }
