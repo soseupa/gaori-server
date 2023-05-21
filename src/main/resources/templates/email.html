@@ -1,64 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>가오리 인증 코드입니다.</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+
     <style>
-        body {
-            background-color: pink;
-            text-align: center;
-            padding-top: 20px;
-            width: 100vw;
-            height: 100vh;
+        @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+        * {
+            font-family: "Noto Sans KR", sans-serif;
         }
 
-        .header {
-            height: 10%;
-            padding-top: 10px;
-            background-color: papayawhip;
+        img {
+            height: 40px;
+        }
+
+        .title {
+            display: flex;
+        }
+
+        .pink {
+            color: #ff3f9b;
+        }
+
+        .code {
+            height: 40px;
+            width: 160px;
+            background-color: #f9f7f7;
+            font-size: 25px;
             border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 80%;
-            margin-left: 10%;
+            display: flex;
+            justify-content: center;
         }
 
-        .content {
-            height: 500px;
-            line-height: 500px;
-            font-size: 100px;
-            width: 80%;
-            background-color: papayawhip;
-            border-radius: 10px;
-            text-align: center;
-            margin-left: 10%;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        span {
-            font-size: 200px;
-            text-align: center;
-        }
-
-        .contain {
-            background-color: pink;
-            width: 100%;
-            height: 100%;
-            margin: auto;
+        p {
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
-<div class="contain">
-    <div class="header">
-        <h1>가오리 인증 코드입니다.</h1>
+<a href='https://ifh.cc/v-0bN7Cv' target='_blank'><img src='https://ifh.cc/g/0bN7Cv.png' border='0'></a><div>
+    <div class="title">
+        <h2 class="pink">메일인증</h2>
+        &nbsp;
+        <h2>안내입니다.</h2>
     </div>
     <div class="content">
         <span style="font-size: 50px;" th:text="${code}">dfdfd</span>
     </div>
+    <p>
+        안녕하세요.
+        <br/>
+        가오리입니다. 저희 서비스를 이용해 주셔서 감사드리며, <br/>위의 코드를
+        입력하여 회원가입을 마무리해 주세요.
+    </p>
 </div>
 </body>
 </html>
