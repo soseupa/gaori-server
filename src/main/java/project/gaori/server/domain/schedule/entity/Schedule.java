@@ -1,6 +1,6 @@
 package project.gaori.server.domain.schedule.entity;
 
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import project.gaori.server.domain.schedule.detail.entity.ScheduleDetail;
 import project.gaori.server.domain.schedule.user.entity.ScheduleUser;
@@ -17,14 +17,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "tbl_schedule")
-@AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
-
 
     @OneToMany(mappedBy = "schedule_detail")
     private List<ScheduleDetail> details = new ArrayList<>();
