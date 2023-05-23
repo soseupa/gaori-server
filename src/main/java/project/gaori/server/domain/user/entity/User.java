@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import project.gaori.server.domain.schedule.entity.Schedule;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
@@ -45,6 +47,9 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "friend", cascade = CascadeType.ALL)
     private List<User> friendList;
+
+    @ManyToMany(mappedBy = "users")
+    private List<Schedule> schedules;
 
     @Builder
     public User(String email, String nickname, String password, Role role) {

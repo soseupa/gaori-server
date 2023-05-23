@@ -2,16 +2,21 @@ package project.gaori.server.domain.schedule.entity;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import project.gaori.server.domain.schedule.detail.entity.ScheduleDetail;
-import project.gaori.server.domain.schedule.user.entity.ScheduleUser;
+import project.gaori.server.domain.user.entity.User;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +31,14 @@ public class Schedule {
 
     @OneToMany(mappedBy = "schedule_detail")
     private List<ScheduleDetail> details = new ArrayList<>();
+    @Column
+    private String title;
 
-    @OneToMany(mappedBy = "schedule_users")
-    private List<ScheduleUser> users = new ArrayList<>();
+    @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime time;
+    @ManyToMany
+    @JoinTable(name = "tbl_schedule_user", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "schedule_id"))
+    private List<User> users = new ArrayList<>();
 
 }
