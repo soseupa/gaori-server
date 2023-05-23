@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import project.gaori.server.domain.friend_requst.domain.FriendRequest;
 import project.gaori.server.domain.schedule.entity.Schedule;
 
 import javax.persistence.CascadeType;
@@ -50,6 +51,12 @@ public class User {
 
     @ManyToMany(mappedBy = "users")
     private List<Schedule> schedules;
+
+    @OneToMany(mappedBy = "sender")
+    private List<FriendRequest> sentFriendRequests;
+
+    @OneToMany(mappedBy = "receiver")
+    private List<FriendRequest> receivedFriendRequests;
 
     @Builder
     public User(String email, String nickname, String password, Role role) {
