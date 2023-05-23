@@ -34,6 +34,6 @@ public class ScheduleDetail {
     private String location;
 
     @Column(nullable = false)
-    private Integer orderIndex;
+    private int orderIndex;
 
 }
