@@ -1,6 +1,7 @@
 package project.gaori.server.domain.schedule.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import project.gaori.server.domain.schedule.detail.entity.ScheduleDetail;
@@ -38,7 +39,13 @@ public class Schedule {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime time;
     @ManyToMany
-    @JoinTable(name = "tbl_schedule_user", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "schedule_id"))
+    @JoinTable(name = "tbl_schedule_user", joinColumns = @JoinColumn(name = "schedule_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users = new ArrayList<>();
+
+    @Builder
+    public Schedule(String title, LocalDateTime time) {
+        this.title = title;
+        this.time = time;
+    }
 
 }
