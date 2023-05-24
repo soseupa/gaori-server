@@ -58,6 +58,8 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/user/check/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth/email/check").permitAll()
                 .antMatchers(HttpMethod.POST, "/swagger-ui/*").permitAll()
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
+
                 .anyRequest().authenticated()
 
                 .and()
