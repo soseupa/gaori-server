@@ -15,7 +15,6 @@ public class LoadHtmlService {
         Context context = new Context();
         context.setVariable("code", code);
 
-        String html = springTemplateEngine.process("email", context);
-        return html;
+        return springTemplateEngine.process("email", context);
     }
 }
