@@ -48,4 +48,7 @@ public class Schedule {
         this.time = time;
     }
 
+    public void addUser(User user) {
+        this.users.add(user);
+    }
 }
