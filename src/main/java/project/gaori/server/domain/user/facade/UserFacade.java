@@ -31,6 +31,7 @@ public class UserFacade {
         return userRepository.existsUserByNickname(nickname);
     }
 
+    @Transactional(readOnly = true)
     public void existsUserByEmail(String email) {
         if (!userRepository.existsUserByEmail(email)) throw UserNotFoundException.EXCEPTION;
     }
