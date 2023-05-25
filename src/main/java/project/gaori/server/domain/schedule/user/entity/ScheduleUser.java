@@ -2,6 +2,7 @@ package project.gaori.server.domain.schedule.user.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.gaori.server.domain.schedule.entity.Schedule;
 import project.gaori.server.domain.user.entity.User;
@@ -16,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
+@Getter
 @Table(name = "tbl_schedule_user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ScheduleUser {

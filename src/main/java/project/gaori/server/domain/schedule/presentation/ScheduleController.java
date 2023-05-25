@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import project.gaori.server.domain.schedule.presentation.dto.request.CreateScheduleRequest;
+import project.gaori.server.domain.schedule.presentation.dto.response.ScheduleListResponse;
 import project.gaori.server.domain.schedule.service.AddUserToScheduleService;
 import project.gaori.server.domain.schedule.service.CreateScheduleService;
+import project.gaori.server.domain.schedule.service.FindSchedulesByDateService;
+
+import java.text.ParseException;
 
 @RestController
 @RequestMapping("/schedule")
@@ -17,15 +21,22 @@ import project.gaori.server.domain.schedule.service.CreateScheduleService;
 public class ScheduleController {
     private final CreateScheduleService createScheduleService;
     private final AddUserToScheduleService addUserToScheduleService;
+    private final FindSchedulesByDateService findSchedulesByDateService;
 
     @PostMapping("")
     public void CreateSchedule(@RequestBody CreateScheduleRequest request) {
         createScheduleService.execute(request);
     }
 
-    @GetMapping("add")
+    @GetMapping("/add")
     public void AddMember(@RequestParam Long id, @RequestParam String email) {
         addUserToScheduleService.execute(id, email);
     }
+
+    @GetMapping("")
+    public ScheduleListResponse GetSchedule(@RequestParam String date) throws ParseException {
+        return findSchedulesByDateService.execute(date);
+    }
+
 
 }
