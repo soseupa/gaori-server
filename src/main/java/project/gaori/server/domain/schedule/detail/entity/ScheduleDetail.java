@@ -1,6 +1,7 @@
 package project.gaori.server.domain.schedule.detail.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.gaori.server.domain.schedule.entity.Schedule;
@@ -23,7 +24,6 @@ public class ScheduleDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -36,4 +36,18 @@ public class ScheduleDetail {
     @Column(nullable = false)
     private int orderIndex;
 
+    @Column(nullable = false)
+    private double latitude;
+
+    @Column(nullable = false)
+    private double longitude;
+
+    @Builder
+    public ScheduleDetail(Schedule schedule_detail, String location, int orderIndex, double latitude, double longitude) {
+        this.schedule_detail = schedule_detail;
+        this.location = location;
+        this.orderIndex = orderIndex;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }
