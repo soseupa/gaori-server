@@ -39,6 +39,7 @@ dependencies {
 	implementation 'com.google.code.gson:gson:2.9.0'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
 
 

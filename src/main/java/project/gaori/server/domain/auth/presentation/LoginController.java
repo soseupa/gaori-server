@@ -10,6 +10,8 @@ import project.gaori.server.domain.auth.presentation.dto.response.TokenResponse;
 import project.gaori.server.domain.auth.service.LoginService;
 import project.gaori.server.domain.user.facade.UserFacade;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/login")
 @RequiredArgsConstructor
@@ -18,7 +20,7 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping
-    public TokenResponse Login(@RequestBody LoginRequest request) {
+    public TokenResponse Login(@RequestBody @Valid LoginRequest request) {
         userFacade.existsUserByEmail(request.getEmail());
         return loginService.execute(request);
     }

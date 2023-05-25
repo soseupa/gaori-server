@@ -21,11 +21,12 @@ public class UserController {
     private final SignUpService signUpService;
 
     @PostMapping("/signup")
-    public void SignUp(@RequestBody @Valid SignUpRequest request){
+    public void SignUp(@RequestBody @Valid SignUpRequest request) {
         signUpService.execute(request);
     }
+
     @GetMapping("/check/{nickname}")
-    public boolean CheckNickname(@PathVariable String nickname){
+    public boolean CheckNickname(@PathVariable String nickname) {
         return checkUserService.execute(nickname);
     }
 }

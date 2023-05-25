@@ -1,12 +1,12 @@
 package project.gaori.server.global.security.auth;
 
-import project.gaori.server.domain.user.entity.repository.UserRepository;
-import project.gaori.server.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import project.gaori.server.domain.user.entity.repository.UserRepository;
+import project.gaori.server.domain.user.exception.UserNotFoundException;
 
 @Service
 @RequiredArgsConstructor
