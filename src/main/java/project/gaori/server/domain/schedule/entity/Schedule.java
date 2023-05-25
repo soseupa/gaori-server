@@ -2,6 +2,7 @@ package project.gaori.server.domain.schedule.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import project.gaori.server.domain.schedule.detail.entity.ScheduleDetail;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tbl_schedule")
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Schedule {
     @Id
