@@ -15,6 +15,6 @@ public class ScheduleFacade {
     @Transactional
     public Schedule findScheduleById(Long scheduleId) {
         return scheduleRepository.findById(scheduleId)
-                .orElseThrow(()-> ScheduleNotFoundException.EXCEPTION);
+                .orElseThrow(() -> ScheduleNotFoundException.EXCEPTION);
     }
 }
