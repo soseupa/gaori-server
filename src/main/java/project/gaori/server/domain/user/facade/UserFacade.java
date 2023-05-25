@@ -35,4 +35,9 @@ public class UserFacade {
     public void existsUserByEmail(String email) {
         if (!userRepository.existsUserByEmail(email)) throw UserNotFoundException.EXCEPTION;
     }
+    @Transactional
+    public User findUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+    }
 }
