@@ -2,6 +2,7 @@ package project.gaori.server.domain.friend_requst.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.gaori.server.domain.user.entity.User;
 
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity(name ="tbl_friend_request")
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FriendRequest {
     @Id
