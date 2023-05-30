@@ -7,6 +7,7 @@ import project.gaori.server.domain.friend.request.entity.FriendRequest;
 import project.gaori.server.domain.friend.request.entity.repository.FriendRequestRepository;
 import project.gaori.server.domain.friend.request.exception.FriendRequestNotFoundException;
 import project.gaori.server.domain.friend.request.facade.FriendRequestFacade;
+import project.gaori.server.domain.friend.service.MakeFriendService;
 import project.gaori.server.domain.user.entity.User;
 import project.gaori.server.domain.user.facade.UserFacade;
 
@@ -16,6 +17,7 @@ public class AcceptFriendRequestService {
     private final UserFacade userFacade;
     private final FriendRequestRepository friendRequestRepository;
     private final FriendRequestFacade friendRequestFacade;
+    private final MakeFriendService makeFriendService;
 
     @Transactional
     public void execute(Long senderId) {
@@ -24,7 +26,7 @@ public class AcceptFriendRequestService {
         FriendRequest request = friendRequestFacade.findFriendRequestBySender(sender);
         if (!friendRequestRepository.existsFriendRequestBySenderAndReceiver(sender, receiver))
             throw FriendRequestNotFoundException.EXCEPTION;
-        receiver.addFriend(request.getSender());
+        makeFriendService.execute(sender, receiver);
         friendRequestRepository.deleteById(request.getId());
     }
 }
