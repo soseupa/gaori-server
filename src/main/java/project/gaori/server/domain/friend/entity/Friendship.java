@@ -13,8 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity(name = "tbl_friends")
+@Entity
+@Table(name = "tbl_friends")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Friendship {

@@ -12,8 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity(name ="tbl_friend_request")
+@Entity
+@Table(name = "tbl_friend_request")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FriendRequest {

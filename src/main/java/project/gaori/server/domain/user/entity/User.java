@@ -17,9 +17,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
-@Entity(name = "tbl_user")
+@Entity
+@Table(name = "tbl_user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class User {
