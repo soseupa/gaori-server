@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import project.gaori.server.domain.user.presentation.dto.request.SignUpRequest;
-import project.gaori.server.domain.user.service.CheckUserService;
+import project.gaori.server.domain.user.service.DuplicationCheckUserService;
 import project.gaori.server.domain.user.service.SignUpService;
 
 import javax.validation.Valid;
@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
-    private final CheckUserService checkUserService;
+    private final DuplicationCheckUserService duplicationCheckUserService;
     private final SignUpService signUpService;
 
     @PostMapping("/signup")
@@ -27,6 +27,6 @@ public class UserController {
 
     @GetMapping("/check/{nickname}")
     public boolean CheckNickname(@PathVariable String nickname) {
-        return checkUserService.execute(nickname);
+        return duplicationCheckUserService.execute(nickname);
     }
 }
