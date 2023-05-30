@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class CheckUserService {
+public class DuplicationCheckUserService {
     private final UserFacade userFacade;
 
     @Transactional
