@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import project.gaori.server.domain.user.entity.User;
 import project.gaori.server.domain.user.entity.repository.UserRepository;
-import project.gaori.server.domain.user.exception.PasswordMismatchException;
+import project.gaori.server.domain.user.exception.UserAlreadyExistsException;
 import project.gaori.server.domain.user.exception.UserNotFoundException;
 import project.gaori.server.global.security.auth.AuthDetails;
 
@@ -38,9 +38,10 @@ public class UserFacade {
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
+
     @Transactional
-    public void checkPassword(String password, User user) {
-        if (!user.getPassword().equals(password))
-            throw PasswordMismatchException.EXCEPTION;
+    public void checkEmail(String email) {
+        if (userRepository.existsUserByEmail(email))
+            throw UserAlreadyExistsException.EXCEPTION;
     }
 }

@@ -1,4 +1,4 @@
-package project.gaori.server.domain.friend.request.entity;
+package project.gaori.server.domain.friend.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import project.gaori.server.domain.user.entity.User;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,25 +16,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_friend_request")
-@Getter
+@Table(name = "tbl_friends")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FriendRequest {
+@Getter
+public class Friendship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "sender_id")
-    private User sender;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "receiver_id")
-    private User receiver;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "friend_id")
+    private User friend;
 
     @Builder
-    public FriendRequest(User sender, User receiver) {
-        this.sender = sender;
-        this.receiver = receiver;
+    public Friendship(User user, User friend) {
+        this.user = user;
+        this.friend = friend;
     }
 }

@@ -19,14 +19,14 @@ public class ScheduleResponse {
     private Long scheduleId;
     private String title;
     private LocalDateTime time;
-    private List<ScheduleUserResponse> scheduleResponseList;
+    private List<ScheduleUserResponse> scheduleUsers;
 
     public static ScheduleResponse of(Schedule schedule, List<User> scheduleUsers) {
         return ScheduleResponse.builder()
                 .scheduleId(schedule.getId())
                 .title(schedule.getTitle())
                 .time(schedule.getTime())
-                .scheduleResponseList(scheduleUsers.stream().map(ScheduleUserResponse::of).collect(Collectors.toList()))
+                .scheduleUsers(scheduleUsers.stream().map(ScheduleUserResponse::of).collect(Collectors.toList()))
                 .build();
     }
 }

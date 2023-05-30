@@ -14,24 +14,24 @@ import project.gaori.server.domain.friend.request.service.CreateRequestService;
 import project.gaori.server.domain.friend.request.service.FindFriendRequestService;
 
 @RestController
-@RequestMapping("/friend")
+@RequestMapping("/friend/request")
 @RequiredArgsConstructor
-public class FriendController {
+public class FriendRequestController {
     private final CreateRequestService createRequestService;
     private final FindFriendRequestService findFriendRequestService;
     private final AcceptFriendRequestService acceptFriendRequestService;
 
-    @PostMapping("/request")
+    @PostMapping("")
     public void requestFriend(@RequestBody CreateFriendRequest request) {
         createRequestService.execute(request);
     }
 
-    @GetMapping("/request")
+    @GetMapping("")
     public FindFriendRequestListResponse findFriendRequest() {
         return findFriendRequestService.execute();
     }
 
-    @GetMapping("/request/accept")
+    @GetMapping("/accept")
     public void acceptFriendRequest(@RequestParam Long senderId) {
         acceptFriendRequestService.execute(senderId);
     }
