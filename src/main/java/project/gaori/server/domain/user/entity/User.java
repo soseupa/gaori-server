@@ -4,7 +4,8 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import project.gaori.server.domain.friend_requst.domain.FriendRequest;
+import project.gaori.server.domain.friend.entity.Friendship;
+import project.gaori.server.domain.friend.request.entity.FriendRequest;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,8 +16,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -40,12 +39,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
-    private User friend;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Friendship> friendList;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "friend", cascade = CascadeType.ALL)
-    private List<User> friendList;
 
     @OneToMany(mappedBy = "sender")
     private List<FriendRequest> sentFriendRequests;
