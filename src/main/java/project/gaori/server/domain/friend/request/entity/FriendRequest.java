@@ -1,4 +1,4 @@
-package project.gaori.server.domain.friend_requst.domain;
+package project.gaori.server.domain.friend.request.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;

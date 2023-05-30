@@ -1,6 +1,6 @@
-package project.gaori.server.domain.friend_requst.exception;
+package project.gaori.server.domain.friend.request.exception;
 
-import project.gaori.server.domain.friend_requst.exception.error.FriendRequestErrorProperty;
+import project.gaori.server.domain.friend.request.exception.error.FriendRequestErrorProperty;
 import project.gaori.server.global.error.exception.GaoriException;
 
 public class FriendRequestForbiddenException extends GaoriException {

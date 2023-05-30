@@ -1,12 +1,12 @@
-package project.gaori.server.domain.friend_requst.service;
+package project.gaori.server.domain.friend.request.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.gaori.server.domain.friend_requst.domain.repository.FriendRequestRepository;
-import project.gaori.server.domain.friend_requst.exception.FriendRequestForbiddenException;
-import project.gaori.server.domain.friend_requst.exception.FriendSelfRequestForbiddenException;
-import project.gaori.server.domain.friend_requst.presentation.dto.request.CreateFriendRequest;
+import project.gaori.server.domain.friend.request.entity.repository.FriendRequestRepository;
+import project.gaori.server.domain.friend.request.exception.FriendRequestForbiddenException;
+import project.gaori.server.domain.friend.request.exception.FriendSelfRequestForbiddenException;
+import project.gaori.server.domain.friend.request.presentation.dto.request.CreateFriendRequest;
 import project.gaori.server.domain.user.entity.User;
 import project.gaori.server.domain.user.facade.UserFacade;
 

@@ -1,4 +1,4 @@
-package project.gaori.server.domain.friend_requst.exception.error;
+package project.gaori.server.domain.friend.request.exception.error;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

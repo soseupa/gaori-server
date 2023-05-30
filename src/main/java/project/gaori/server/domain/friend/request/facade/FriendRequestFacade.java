@@ -1,11 +1,11 @@
-package project.gaori.server.domain.friend_requst.facade;
+package project.gaori.server.domain.friend.request.facade;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import project.gaori.server.domain.friend_requst.domain.FriendRequest;
-import project.gaori.server.domain.friend_requst.domain.repository.FriendRequestRepository;
-import project.gaori.server.domain.friend_requst.exception.FriendRequestNotFoundException;
+import project.gaori.server.domain.friend.request.entity.repository.FriendRequestRepository;
+import project.gaori.server.domain.friend.request.entity.FriendRequest;
+import project.gaori.server.domain.friend.request.exception.FriendRequestNotFoundException;
 import project.gaori.server.domain.user.entity.User;
 
 @Component

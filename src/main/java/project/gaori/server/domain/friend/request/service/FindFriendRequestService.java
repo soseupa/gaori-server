@@ -1,12 +1,12 @@
-package project.gaori.server.domain.friend_requst.service;
+package project.gaori.server.domain.friend.request.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.gaori.server.domain.friend_requst.domain.FriendRequest;
-import project.gaori.server.domain.friend_requst.domain.repository.FriendRequestRepository;
-import project.gaori.server.domain.friend_requst.presentation.dto.response.FindFriendRequestListResponse;
-import project.gaori.server.domain.friend_requst.presentation.dto.response.FindFriendRequestResponse;
+import project.gaori.server.domain.friend.request.entity.repository.FriendRequestRepository;
+import project.gaori.server.domain.friend.request.presentation.dto.response.FindFriendRequestListResponse;
+import project.gaori.server.domain.friend.request.presentation.dto.response.FindFriendRequestResponse;
+import project.gaori.server.domain.friend.request.entity.FriendRequest;
 import project.gaori.server.domain.user.entity.User;
 import project.gaori.server.domain.user.facade.UserFacade;
 

@@ -1,8 +1,8 @@
-package project.gaori.server.domain.friend_requst.domain.repository;
+package project.gaori.server.domain.friend.request.entity.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import project.gaori.server.domain.friend_requst.domain.FriendRequest;
+import project.gaori.server.domain.friend.request.entity.FriendRequest;
 import project.gaori.server.domain.user.entity.User;
 
 import java.util.List;

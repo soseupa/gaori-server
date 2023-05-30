@@ -1,9 +1,9 @@
-package project.gaori.server.domain.friend_requst.presentation.dto.request;
+package project.gaori.server.domain.friend.request.presentation.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import project.gaori.server.domain.friend_requst.domain.FriendRequest;
+import project.gaori.server.domain.friend.request.entity.FriendRequest;
 import project.gaori.server.domain.user.entity.User;
 
 

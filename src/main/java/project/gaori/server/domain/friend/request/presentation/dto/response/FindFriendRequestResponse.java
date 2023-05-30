@@ -1,4 +1,4 @@
-package project.gaori.server.domain.friend_requst.presentation.dto.response;
+package project.gaori.server.domain.friend.request.presentation.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
