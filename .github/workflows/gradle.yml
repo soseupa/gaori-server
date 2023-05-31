@@ -29,7 +29,6 @@ jobs:
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
             docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }} .
             docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
-      
 
       - name: google auth
         id: "auth"
@@ -44,10 +43,7 @@ jobs:
 
       - name: use gcloud cli
         run: "gcloud info"
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
+
       - name: gcp deploy
         run: |-
           gcloud compute instances update-container "${{ secrets.GCE_INSTANCE }}" \
