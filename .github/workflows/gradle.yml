@@ -54,4 +54,4 @@ jobs:
           gcloud compute instances update-container "gaori-server" \
             --zone "${{ secrets.GCE_INSTANCE_ZONE }}" \
             --container-image ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }} \
-            --container-command "docker network connect gaori klt-gaori-server-advx"
+            --container-command "docker run --name gaori -d -p 8080:8080 --net gaori ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}"
