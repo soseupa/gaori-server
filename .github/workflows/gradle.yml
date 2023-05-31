@@ -46,11 +46,11 @@ jobs:
 
       - name: gcp deploy
         run: |-
-          gcloud compute instances update-container "${{ secrets.GCE_INSTANCE }}" \
-            --zone "${{ secrets.GCE_INSTANCE_ZONE }}" \
+          gcloud compute instances update-container "gaori" \
+            --zone "asia-northeast3-a" \
             --container-image "soohyuneee/home:0.0.1"
 
       - name: gcp reset
         run: |-
-          gcloud compute instances reset "${{ secrets.GCE_INSTANCE }}" \
-            --zone "${{ secrets.GCE_INSTANCE_ZONE }}"
+          gcloud compute instances reset "gaori" \
+            --zone "asia-northeast3-a"
