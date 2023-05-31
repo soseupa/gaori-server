@@ -48,7 +48,7 @@ jobs:
         run: |-
           gcloud compute instances update-container "gaori" \
             --zone "asia-northeast3-a" \
-            --container-image "soohyuneee/home:0.0.1"
+            --container-image "${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}"
 
       - name: gcp reset
         run: |-
