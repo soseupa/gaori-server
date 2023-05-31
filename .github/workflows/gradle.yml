@@ -25,11 +25,11 @@ jobs:
 
       - name: Docker Build
         if: contains(github.ref, 'master')
-        run: docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }} .
+        run: docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:1.0.0 .
 
       - name: Docker Push
         if: contains(github.ref, 'master')
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:1.0.0
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
         run: |-
           gcloud compute instances update-container "gaori-server" \
             --zone "${{ secrets.GCE_INSTANCE_ZONE }}" \
-            --container-image ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
+            --container-image ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:1.0.0
 
       - name: gcp reset
         run: |-
