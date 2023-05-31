@@ -26,9 +26,8 @@ jobs:
       - name: Docker Build
         if: contains(github.ref, 'master')
         run: |
-            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-            docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }} .
-            docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
+            docker build -f Dockerfile -t "asia-northeast3-docker.pkg.dev/iron-portfolio-380503/gaori" .
+            docker push "asia-northeast3-docker.pkg.dev/iron-portfolio-380503/gaori"
 
       - name: google auth
         id: "auth"
@@ -48,7 +47,7 @@ jobs:
         run: |-
           gcloud compute instances update-container "gaori" \
             --zone "asia-northeast3-a" \
-            --container-image "${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}"
+            --container-image "asia-northeast3-docker.pkg.dev/iron-portfolio-380503/gaori"
 
       - name: gcp reset
         run: |-
