@@ -1,7 +1,7 @@
 name: gaori CI/CD
 on:
   push:
-    branches: ["master"]
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -13,11 +13,11 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-        
+
       - name: Gradle Build
         run: |
-            chmod +x ./gradlew
-            ./gradlew clean build
+          chmod +x ./gradlew
+          ./gradlew clean build
 
       - name: Docker Login
         if: contains(github.ref, 'master')
@@ -53,4 +53,10 @@ jobs:
         run: |-
           gcloud compute instances update-container "gaori-server" \
             --zone "${{ secrets.GCE_INSTANCE_ZONE }}" \
-            --container-image ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
+            --container-image ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }} \
+            --container-arg="--net gaori"
+
+      - name: gcp reset
+        run: |-
+          gcloud compute instances reset "gaori-server" \
+            --zone "${{ secrets.GCE_INSTANCE_ZONE }}"
