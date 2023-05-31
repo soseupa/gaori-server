@@ -45,11 +45,11 @@ jobs:
 
       - name: gcp deploy
         run: |-
-          gcloud compute instances update-container "gaori" \
+          gcloud compute instances update-container "gaori-server" \
             --zone "asia-northeast3-a" \
             --container-image "asia-northeast3-docker.pkg.dev/iron-portfolio-380503/gaori"
 
       - name: gcp reset
         run: |-
-          gcloud compute instances reset "gaori" \
+          gcloud compute instances reset "gaori-server" \
             --zone "asia-northeast3-a"
