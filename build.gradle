@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'project.gaori'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '11'
 
 configurations {
@@ -41,6 +41,9 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+}
+springBoot {
+    mainClass = 'project.gaori.server'
 }
 
 
