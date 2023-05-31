@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:mysql://gaori.cxfnbfus27dl.ap-northeast-2.rds.amazonaws.com/gaori?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: soseupa
+    password: soseupa12!!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cache:
+    type: redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  main:
+    allow-bean-definition-overriding: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: soseupaori@gmail.com
+    password: wjnavlrwdohjpgca
+    secretkey: fjsdlfhskfshdfdsflksjfsdl
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+logging:
+  level:
+    org.hibernate.type: trace
+
+jwt:
+  header: Authorization
+  accessTime: 3600000
+  refreshTime: 2592000000
+  prefix: Bearer
+  secretKey: and0LXRSLkfd3nfls8324sdflsk2fjlc3QtYWxqamFiYWVnaS1qd3QtdGVzdC1hbGpqYWJhZWdpLWp3dC10ZXN0LWFsamphYmFlZ2ktand0LXRlc3QtYWxqamFiYWVnaS1qd3QtdGVzdC1hbGpqYWJhZWdpLWp3dC10ZXN0LWFsamphYmFlZ2ktaadksa3nd0LXRlc3QtYWxqamFiYWVnaS1qd3QtdGVzdCsdfksjfl31hbGpqYWJhZWdp
+server:
+  port: 8080
