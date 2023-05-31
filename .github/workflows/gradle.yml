@@ -54,8 +54,3 @@ jobs:
           gcloud compute instances update-container "gaori-server" \
             --zone "${{ secrets.GCE_INSTANCE_ZONE }}" \
             --container-image ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
-
-      - name: gcp reset
-        run: |-
-          gcloud compute instances reset "gaori-server" \
-            --zone "${{ secrets.GCE_INSTANCE_ZONE }}"
