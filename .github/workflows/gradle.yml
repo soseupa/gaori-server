@@ -1,11 +1,18 @@
-name: gaori CI/CD
+name: Gaori CI/CD
+
 on:
   push:
-    branches: ["master"]
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 11
@@ -13,49 +20,32 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-
+  		
       - name: Gradle Build
         run: |
-          chmod +x ./gradlew
-          ./gradlew clean build
-
-      - name: Docker Login
-        if: contains(github.ref, 'master')
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            chmod +x ./gradlew
+            ./gradlew clean build
 
       - name: Docker Build
         if: contains(github.ref, 'master')
-        run: docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:1.0.0 .
-
-      - name: Docker Push
-        if: contains(github.ref, 'master')
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:1.0.0
-
+        run: |
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }} .
+            docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: google auth
-        id: "auth"
-        uses: "google-github-actions/auth@v1"
-        with:
-          credentials_json: "${{ secrets.GCE_SA_KEY }}"
-
-      - name: set up Cloud SDK
-        uses: "google-github-actions/setup-gcloud@v1"
-        with:
-          project_id: ${{ secrets.PROJECT_ID }}
-
-      - name: use gcloud cli
-        run: "gcloud info"
-
-      - name: gcp deploy
-        run: |-
-          gcloud compute instances update-container "gaori" \
-            --zone "${{ secrets.GCE_INSTANCE_ZONE }}" \
-            --container-image ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:1.0.0
-
-      - name: gcp reset
-        run: |-
-          gcloud compute instances reset "gaori" \
-            --zone "${{ secrets.GCE_INSTANCE_ZONE }}"
+        - name: Docker Deploy executing remote ssh commands using ssh_key
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST_PROD }}
+            username: ubuntu
+            key: ${{ secrets.SSH_KEY }}
+            script: |
+              cd app
+              sudo rm concal.log
+              sudo docker rm - f $(docker ps -qa)
+              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
+              docker-compose up -d
+              docker image prune -f
