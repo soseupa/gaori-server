@@ -1,5 +1,7 @@
 package project.gaori.server.domain.friend.request.presentation;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,21 +18,23 @@ import project.gaori.server.domain.friend.request.service.FindFriendRequestServi
 @RestController
 @RequestMapping("/friend/request")
 @RequiredArgsConstructor
+@Tag(name = "친구 요청 서버")
 public class FriendRequestController {
     private final CreateRequestService createRequestService;
     private final FindFriendRequestService findFriendRequestService;
     private final AcceptFriendRequestService acceptFriendRequestService;
 
+    @Operation(summary = "친구 요청 보내기")
     @PostMapping("")
     public void requestFriend(@RequestBody CreateFriendRequest request) {
         createRequestService.execute(request);
     }
-
+    @Operation(summary = "친구 요청 확인하기")
     @GetMapping("")
     public FindFriendRequestListResponse findFriendRequest() {
         return findFriendRequestService.execute();
     }
-
+    @Operation(summary = "친구 요청 수락")
     @GetMapping("/accept")
     public void acceptFriendRequest(@RequestParam Long senderId) {
         acceptFriendRequestService.execute(senderId);
