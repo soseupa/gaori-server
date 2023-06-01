@@ -41,7 +41,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_PROD }}
-          username: ubuntu
+          username: 05tngus95
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd app
