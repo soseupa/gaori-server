@@ -51,12 +51,12 @@ jobs:
 
       - name: gcp deploy
         run: |-
-          gcloud compute instances update-container "gaori-server" \
+          gcloud compute instances update-container "gaori" \
             --zone "${{ secrets.GCE_INSTANCE_ZONE }}" \
             --container-image ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:1.0.0
             --docker-image soohyuneeee/gaori-image
 
       - name: gcp reset
         run: |-
-          gcloud compute instances reset "gaori-server" \
+          gcloud compute instances reset "gaori" \
             --zone "${{ secrets.GCE_INSTANCE_ZONE }}"
