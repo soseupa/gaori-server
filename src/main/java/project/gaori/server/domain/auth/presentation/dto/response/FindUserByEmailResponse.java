@@ -8,4 +8,5 @@ import lombok.Getter;
 public class FindUserByEmailResponse {
     private String nickname;
     private String email;
+    private boolean isFriend;
 }
