@@ -7,6 +7,7 @@ import project.gaori.server.domain.schedule.entity.repository.ScheduleRepository
 import project.gaori.server.domain.schedule.presentation.dto.response.ScheduleListResponse;
 import project.gaori.server.domain.schedule.presentation.dto.response.ScheduleResponse;
 import project.gaori.server.domain.schedule.user.entity.ScheduleUser;
+import project.gaori.server.domain.schedule.user.entity.repository.ScheduleUserRepository;
 import project.gaori.server.domain.user.entity.User;
 import project.gaori.server.domain.user.facade.UserFacade;
 
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 public class FindSchedulesByDateService {
     private final ScheduleRepository scheduleRepository;
     private final UserFacade userFacade;
+    private final ScheduleUserRepository scheduleUserRepository;
 
     public ScheduleListResponse execute(String dateAsString) throws ParseException {
         User user = userFacade.getCurrentUser();
@@ -34,7 +36,7 @@ public class FindSchedulesByDateService {
         return ScheduleListResponse.builder()
                 .length(lists.size())
                 .schedules(lists.stream().map(schedule -> {
-                    List<User> scheduleUsers = schedule.getScheduleUsers().stream().map(ScheduleUser::getUser).collect(Collectors.toList());
+                    List<User> scheduleUsers = scheduleUserRepository.findAllBySchedule(schedule).stream().map(ScheduleUser::getUser).collect(Collectors.toList());
                     return ScheduleResponse.of(schedule, scheduleUsers);
                 }).collect(Collectors.toList()))
                 .build();
