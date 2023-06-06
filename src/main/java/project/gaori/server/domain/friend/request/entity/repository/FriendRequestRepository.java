@@ -14,5 +14,5 @@ public interface FriendRequestRepository extends JpaRepository<FriendRequest, Lo
     List<FriendRequest> findAllFriendRequestBySenderAndReceiver(User sender, User receiver);
     List<FriendRequest> findAllByReceiver(User receiver);
 
-    Optional<FriendRequest> findBySender(User sender);
+    Optional<FriendRequest> findBySenderAndReceiver(User sender, User receiver);
 }

@@ -23,7 +23,7 @@ public class AcceptFriendRequestService {
     public void execute(Long senderId) {
         User receiver = userFacade.getCurrentUser();
         User sender = userFacade.findUserById(senderId);
-        FriendRequest request = friendRequestFacade.findFriendRequestBySender(sender);
+        FriendRequest request = friendRequestFacade.findFriendRequestBySenderAndReceiver(sender,receiver);
         if (friendRequestRepository.findAllFriendRequestBySenderAndReceiver(sender, receiver).isEmpty())
             throw FriendRequestNotFoundException.EXCEPTION;
         makeFriendService.execute(sender, receiver);

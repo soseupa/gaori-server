@@ -14,7 +14,7 @@ public class FriendRequestFacade {
     private final FriendRequestRepository friendRequestRepository;
 
     @Transactional
-    public FriendRequest findFriendRequestBySender(User sender) {
-        return friendRequestRepository.findBySender(sender).orElseThrow(() -> FriendRequestNotFoundException.EXCEPTION);
+    public FriendRequest findFriendRequestBySenderAndReceiver(User sender, User receiver) {
+        return friendRequestRepository.findBySenderAndReceiver(sender, receiver).orElseThrow(() -> FriendRequestNotFoundException.EXCEPTION);
     }
 }
