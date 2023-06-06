@@ -24,7 +24,7 @@ public class AcceptFriendRequestService {
         User receiver = userFacade.getCurrentUser();
         User sender = userFacade.findUserById(senderId);
         FriendRequest request = friendRequestFacade.findFriendRequestBySender(sender);
-        if (!friendRequestRepository.existsFriendRequestBySenderAndReceiver(sender, receiver))
+        if (friendRequestRepository.findAllFriendRequestBySenderAndReceiver(sender, receiver).isEmpty())
             throw FriendRequestNotFoundException.EXCEPTION;
         makeFriendService.execute(sender, receiver);
         friendRequestRepository.deleteById(request.getId());
