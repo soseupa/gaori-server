@@ -32,6 +32,7 @@ public class FindSchedulesByDateService {
         LocalDateTime endDay = startDay.plusHours(23).plusMinutes(59).plusSeconds(59).plusSeconds(59);
         List<Schedule> lists = scheduleRepository.findAllByScheduleUsersAndTime(user, startDay, endDay);
         return ScheduleListResponse.builder()
+                .length(lists.size())
                 .schedules(lists.stream().map(schedule -> {
                     List<User> scheduleUsers = schedule.getScheduleUsers().stream().map(ScheduleUser::getUser).collect(Collectors.toList());
                     return ScheduleResponse.of(schedule, scheduleUsers);

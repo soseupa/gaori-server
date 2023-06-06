@@ -10,5 +10,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class ScheduleListResponse {
+    private int length;
     private List<ScheduleResponse> schedules;
 }
