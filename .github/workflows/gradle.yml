@@ -44,8 +44,6 @@ jobs:
           username: 05tngus95
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd app
-            sudo rm concal.log
             sudo docker rm - f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
             docker-compose up -d
