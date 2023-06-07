@@ -11,6 +11,7 @@ import project.gaori.server.domain.schedule.entity.Schedule;
 public class CreateScheduleDetailRequest {
     private Long id;
     private String location;
+    private String title;
     private double latitude;
     private double longitude;
 
@@ -21,6 +22,7 @@ public class CreateScheduleDetailRequest {
                 .orderIndex(order)
                 .latitude(this.latitude)
                 .longitude(this.longitude)
+                .title(this.title)
                 .build();
     }
 }

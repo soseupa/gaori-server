@@ -14,6 +14,7 @@ public class ScheduleDetailResponse {
     private double latitude;
     private double longitude;
     private int orderIndex;
+    private String title;
 
     public static ScheduleDetailResponse of(ScheduleDetail scheduleDetail) {
         return ScheduleDetailResponse.builder()
@@ -22,6 +23,7 @@ public class ScheduleDetailResponse {
                 .latitude(scheduleDetail.getLatitude())
                 .longitude(scheduleDetail.getLongitude())
                 .orderIndex(scheduleDetail.getOrderIndex())
+                .title(scheduleDetail.getTitle())
                 .build();
     }
 }

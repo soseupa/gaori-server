@@ -35,6 +35,8 @@ public class ScheduleDetail {
 
     @Column(nullable = false)
     private int orderIndex;
+    @Column(nullable = false)
+    private String title;
 
     @Column(nullable = false)
     private double latitude;
@@ -43,11 +45,12 @@ public class ScheduleDetail {
     private double longitude;
 
     @Builder
-    public ScheduleDetail(Schedule schedule_detail, String location, int orderIndex, double latitude, double longitude) {
+    public ScheduleDetail(Schedule schedule_detail, String location, int orderIndex, double latitude, double longitude,String title) {
         this.schedule_detail = schedule_detail;
         this.location = location;
         this.orderIndex = orderIndex;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.title = title;
     }
 }
