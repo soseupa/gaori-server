@@ -14,6 +14,7 @@ import project.gaori.server.domain.friend.request.presentation.dto.response.Find
 import project.gaori.server.domain.friend.request.service.AcceptFriendRequestService;
 import project.gaori.server.domain.friend.request.service.CreateRequestService;
 import project.gaori.server.domain.friend.request.service.FindFriendRequestService;
+import project.gaori.server.domain.friend.request.service.RefuseFriendRequestService;
 
 @RestController
 @RequestMapping("/friend/request")
@@ -23,6 +24,7 @@ public class FriendRequestController {
     private final CreateRequestService createRequestService;
     private final FindFriendRequestService findFriendRequestService;
     private final AcceptFriendRequestService acceptFriendRequestService;
+    private final RefuseFriendRequestService refuseFriendRequestService;
 
     @Operation(summary = "친구 요청 보내기")
     @PostMapping("")
@@ -39,4 +41,7 @@ public class FriendRequestController {
     public void acceptFriendRequest(@RequestParam Long senderId) {
         acceptFriendRequestService.execute(senderId);
     }
+    @Operation(summary = "친구 요청 거절")
+    @GetMapping("/refuse")
+    public void refuseFriendRequest(@RequestParam Long senderId) { refuseFriendRequestService.execute(senderId); }
 }
