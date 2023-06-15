@@ -21,6 +21,13 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+          
+      - name: Make application.properties
+        run: | 
+          cd ./src/main/resources
+          touch ./env.yml
+          echo "${{ secrets.ENV_YML }}" > ./env.yml
+        shell: bash
 
       - name: Gradle Build
         run: |
