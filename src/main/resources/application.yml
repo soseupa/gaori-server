@@ -1,8 +1,10 @@
 spring:
+  config:
+    import: classpath:/env.yml
   datasource:
-    url: jdbc:mysql://gaori.cxfnbfus27dl.ap-northeast-2.rds.amazonaws.com/gaori?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
-    username: soseupa
-    password: soseupa12!!
+    url: ${gaori.mysql.host}
+    username: ${gaori.mysql.username}
+    password: ${gaori.mysql.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
@@ -18,16 +20,15 @@ spring:
   cache:
     type: redis
   redis:
-    host: redis
-    port: 6379
+    host: ${gaori.redis.host}
+    port: ${gaori.redis.port}
   main:
     allow-bean-definition-overriding: true
   mail:
     host: smtp.gmail.com
-    port: 587
-    username: soseupaori@gmail.com
-    password: wjnavlrwdohjpgca
-    secretkey: fjsdlfhskfshdfdsflksjfsdl
+    port: ${gaori.mail.port}
+    username: ${gaori.mail.username}
+    password: ${gaori.mail.password}
     properties:
       mail:
         smtp:
@@ -44,6 +45,6 @@ jwt:
   accessTime: 3600000
   refreshTime: 2592000000
   prefix: Bearer
-  secretKey: and0LXRSLkfd3nfls8324sdflsk2fjlc3QtYWxqamFiYWVnaS1qd3QtdGVzdC1hbGpqYWJhZWdpLWp3dC10ZXN0LWFsamphYmFlZ2ktand0LXRlc3QtYWxqamFiYWVnaS1qd3QtdGVzdC1hbGpqYWJhZWdpLWp3dC10ZXN0LWFsamphYmFlZ2ktaadksa3nd0LXRlc3QtYWxqamFiYWVnaS1qd3QtdGVzdCsdfksjfl31hbGpqYWJhZWdp
+  secretKey: ${gaori.jwt.secretKey}
 server:
   port: 8080

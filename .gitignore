@@ -1,5 +1,6 @@
 HELP.md
 .gradle
+env.yml
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -35,3 +36,4 @@ out/
 
 ### VS Code ###
 .vscode/
+
