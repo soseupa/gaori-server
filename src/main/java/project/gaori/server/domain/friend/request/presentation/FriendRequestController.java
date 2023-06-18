@@ -16,6 +16,8 @@ import project.gaori.server.domain.friend.request.service.CreateRequestService;
 import project.gaori.server.domain.friend.request.service.FindFriendRequestService;
 import project.gaori.server.domain.friend.request.service.RefuseFriendRequestService;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/friend/request")
 @RequiredArgsConstructor
@@ -28,7 +30,7 @@ public class FriendRequestController {
 
     @Operation(summary = "친구 요청 보내기")
     @PostMapping("")
-    public void requestFriend(@RequestBody CreateFriendRequest request) {
+    public void requestFriend(@RequestBody CreateFriendRequest request) throws IOException {
         createRequestService.execute(request);
     }
     @Operation(summary = "친구 요청 확인하기")
