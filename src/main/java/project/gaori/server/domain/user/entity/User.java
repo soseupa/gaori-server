@@ -45,10 +45,10 @@ public class User {
     private List<Friendship> friendList;
 
 
-    @OneToMany(mappedBy = "sender")
+    @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FriendRequest> sentFriendRequests;
 
-    @OneToMany(mappedBy = "receiver")
+    @OneToMany(mappedBy = "receiver", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FriendRequest> receivedFriendRequests;
 
     @Builder
