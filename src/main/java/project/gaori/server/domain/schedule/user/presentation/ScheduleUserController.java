@@ -1,4 +1,4 @@
-package project.gaori.server.domain.schedule.user.entity.presentation;
+package project.gaori.server.domain.schedule.user.presentation;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import project.gaori.server.domain.schedule.service.AddUserToScheduleService;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/schedule/user")
 @RequiredArgsConstructor
@@ -18,7 +20,7 @@ public class ScheduleUserController {
 
     @Operation(summary = "일정에 친구 추가")
     @GetMapping("/add")
-    public void AddMember(@RequestParam Long id, @RequestParam String email) {
+    public void AddMember(@RequestParam Long id, @RequestParam String email) throws IOException {
         addUserToScheduleService.execute(id, email);
     }
 }
