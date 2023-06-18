@@ -40,8 +40,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    implementation group: 'com.google.firebase', name: 'firebase-admin', version: '8.1.0'
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
-
 
 
