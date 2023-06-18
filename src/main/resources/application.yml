@@ -48,3 +48,7 @@ jwt:
   secretKey: ${gaori.jwt.secretKey}
 server:
   port: 8080
+
+firebase:
+  api:
+    url: ${gaori.firebase.api.url}
