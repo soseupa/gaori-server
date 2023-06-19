@@ -17,7 +17,7 @@ public class CreateTargetTokenService {
     @Transactional
     public void execute(String targetToken) {
         User user = userFacade.getCurrentUser();
-        targetTokenRepository.findByUserAndToken(user, targetToken).ifPresentOrElse(
+        targetTokenRepository.findByUser(user).ifPresentOrElse(
                 token -> token.updateToken(targetToken),
                 () -> targetTokenRepository.save(
                         TargetToken.builder()
