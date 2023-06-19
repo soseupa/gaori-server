@@ -12,11 +12,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "tbl_target_token")
+@Table(name = "tbl_target_token")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class TargetToken {
@@ -25,8 +26,14 @@ public class TargetToken {
     private Long id;
     @Column
     private String token;
-   @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
+
+
+    public void updateToken(String token) {
+        this.token = token;
+    }
 
     @Builder
     public TargetToken(String token, User user) {

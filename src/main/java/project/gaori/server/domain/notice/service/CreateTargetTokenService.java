@@ -17,11 +17,14 @@ public class CreateTargetTokenService {
     @Transactional
     public void execute(String targetToken) {
         User user = userFacade.getCurrentUser();
-        targetTokenRepository.save(
-                TargetToken.builder()
-                        .user(user)
-                        .token(targetToken)
-                        .build()
+        targetTokenRepository.findByUserAndToken(user, targetToken).ifPresentOrElse(
+                token -> token.updateToken(targetToken),
+                () -> targetTokenRepository.save(
+                        TargetToken.builder()
+                                .user(user)
+                                .token(targetToken)
+                                .build()
+                )
         );
     }
 }
