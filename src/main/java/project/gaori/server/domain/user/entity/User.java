@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.gaori.server.domain.friend.entity.Friendship;
 import project.gaori.server.domain.friend.request.entity.FriendRequest;
-import project.gaori.server.domain.notice.entity.TargetToken;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +17,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.List;
 
@@ -53,8 +51,6 @@ public class User {
     @OneToMany(mappedBy = "receiver", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FriendRequest> receivedFriendRequests;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private TargetToken targetToken;
 
     @Builder
     public User(String email, String nickname, String password, Role role) {
